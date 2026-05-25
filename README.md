@@ -31,22 +31,32 @@ Supports configurable scaffolding (heavy / medium / light) and any language Clau
 
 ## How to use it
 
-### Option 1: Paste into Claude chat (easiest)
-
-1. Go to [`dist/skill-bundle.md`](dist/skill-bundle.md) → click "Raw"
-2. Press Ctrl+A then Ctrl+C (Cmd on Mac) to copy the whole thing
-3. Open a new chat at [claude.ai](https://claude.ai)
-4. Paste it as your first message
-5. Tell Claude: "Let's start studying for the examen civique"
-
-That's it. Claude reads the bundle, asks you a few setup questions, then begins drilling.
-
-### Option 2: Claude Projects (Pro/Max plan)
+### Option 1: Claude Projects (Pro/Max plan) — recommended
 
 1. Clone or download this repo
 2. Create a new Claude Project
-3. Add `SKILL.md`, `references/questions.md`, and `references/scenarios.md` as Project knowledge
-4. Start a chat in the Project and say "Let's start studying"
+3. Add `SKILL.md`, `references/questions.md`, and `references/scenarios.md` as Project knowledge files
+4. Start a chat in the Project and say "Let's start studying for the examen civique"
+
+Claude reads all three files automatically. This is the cleanest setup — the references stay separated, and you can update them without disturbing the project.
+
+### Option 2: Single-file paste (any Claude chat)
+
+If you can't use Projects, you can paste the whole skill as a single block:
+
+1. Clone the repo locally:
+   ```
+   git clone https://github.com/kalinkalinka/examen-civique-skill.git
+   cd examen-civique-skill
+   ```
+2. Build the bundle:
+   ```
+   ./scripts/build-bundle.sh
+   ```
+3. This generates `dist/skill-bundle.md` (~2,000 lines). Copy its contents.
+4. Paste into a new Claude chat as your first message, then say "Let's start studying."
+
+The bundle is regenerated from source on demand so the repo doesn't carry a stale concatenated copy.
 
 ### Option 3: Claude Code or custom integration
 
@@ -64,10 +74,10 @@ examen-civique-skill/
 ├── LICENSE                     # MIT
 ├── SKILL.md                    # the skill itself — method, protocol, layouts
 ├── references/
-│   ├── questions.md            # 170 official questions + answers + 1-line notes
+│   ├── questions.md            # 200 question stems + answers + 1-line notes
 │   └── scenarios.md            # mises-en-situation guidance
-└── dist/
-    └── skill-bundle.md         # auto-generated single-file bundle, paste-ready
+└── scripts/
+    └── build-bundle.sh         # generates dist/skill-bundle.md on demand
 ```
 
 ## Honest caveats
@@ -76,6 +86,7 @@ examen-civique-skill/
 - **The 12 *mises en situation* on the real exam are unpublished.** This skill simulates plausible ones based on the rules tested in the published material, but cannot reproduce the actual exam questions.
 - **The exam content changes occasionally.** This repo reflects the official CSP list as of May 2026. Check the official source at [formation-civique.interieur.gouv.fr](https://formation-civique.interieur.gouv.fr/examen-civique/) before your exam.
 - **Pass threshold is 32/40 (80%).** This skill optimizes for passing, not for getting every question right.
+- **The question count is approximate.** The repo currently has 200 questions covering all 5 themes; the official published list is closer to 170. The extras are natural variations on the same testable concepts.
 
 ## Background
 
