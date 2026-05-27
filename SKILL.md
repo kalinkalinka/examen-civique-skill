@@ -1,6 +1,6 @@
 ---
 name: examen-civique-skill
-description: Drilling skill for the French civic exam (examen civique) for the multi-year residence permit (carte de séjour pluriannuelle, CSP). Runs structured 10-question batches over the official ~170-question pool, with concept-level explanations of misses, vocabulary glosses, theme-level consolidation, and an optional mock exam. Multilingual interaction (language chosen by the user at setup); question stems remain in French.
+description: Drilling skill for the French civic exam (examen civique) for the multi-year residence permit (carte de séjour pluriannuelle, CSP). Runs structured 10-question batches over 200 banked knowledge questions: official CSP question stems plus natural variations on the same testable concepts, with concept-level explanations of misses, vocabulary glosses, theme-level consolidation, and an optional mock exam that can generate plausible unpublished scenario questions from guidance patterns. Multilingual interaction (language chosen by the user at setup); question stems remain in French.
 version: 0.1.0
 author: kalinkalinka
 license: MIT
@@ -25,7 +25,7 @@ Do NOT load this skill for the *carte de résident* (CR) or *naturalisation* exa
 
 ## What this skill does
 
-Runs a study session over the official CSP question pool (~170 questions across 5 themes), in one of four modes:
+Runs a study session over 200 banked CSP knowledge questions across 5 themes. The bank is based on the official published question stems, plus natural variations on the same testable concepts. It also includes guidance for generating plausible unpublished *mises en situation* scenarios in mock exam mode.
 
 1. **Full walkthrough** — go through every theme in order, 10 questions per batch, grading + explanation as you go
 2. **Drill weak spots** — re-quiz only questions the user missed earlier in the current session
@@ -247,8 +247,8 @@ When the user signals they're done (says "stop," "that's enough," "je suis prêt
 
 Before the first batch in any mode, read:
 
-- `references/questions.md` — the 170 official question stems + community-verified answers + 1-line notes, grouped by theme, plus the theme-specific drill blocks
-- `references/scenarios.md` — guidance on the 12 unpublished *mises en situation*, including pattern descriptions and example scenarios
+- `references/questions.md` — 200 banked knowledge questions: official CSP question stems plus natural variations on the same testable concepts, with community-verified answers + 1-line notes, grouped by theme, plus the theme-specific drill blocks
+- `references/scenarios.md` — guidance for generating the 12 unpublished *mises en situation* in mock exam mode, including pattern descriptions and example scenarios
 
 Do not fabricate questions outside the bank. Do not edit the bank. If the user spots an error in a question or answer, acknowledge it and tell them to open an issue at https://github.com/kalinkalinka/examen-civique-skill/issues.
 
@@ -259,7 +259,7 @@ Do not fabricate questions outside the bank. Do not edit the bank. If the user s
 - **Vocabulary glosses, explanations, scorecards, system messages: in user's chosen language.**
 - **Do not reveal the correct answer before the user has attempted.** Even if the user asks (in which case, gently push back and ask them to guess first).
 - **Do not skip the grading + explanation step** to move faster. The whole value is in the explanations.
-- **Do not generate new questions** outside the bank. If you need to fill 40 questions for a mock and the bank is short, repeat questions (and tell the user). Do not invent.
+- **Do not generate new knowledge questions** outside the bank. If you need to fill knowledge-question slots for a mock and the bank is short, repeat questions (and tell the user). Scenario questions are the exception: generate them only from the grounded patterns in `references/scenarios.md`.
 - **Do not assume scaffolding level** mid-session. If the user wants more or less detail, they'll ask; otherwise stay at the level they chose at setup.
 - **Be honest about uncertainty.** If a question's answer is ambiguous or the official source has updated, say so rather than confabulating.
 

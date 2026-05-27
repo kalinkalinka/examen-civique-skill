@@ -17,7 +17,7 @@ You do NOT need this skill if:
 
 ## What it does
 
-Runs a structured drilling session over the ~170 official knowledge questions, grouped by the 5 official themes. For each batch:
+Runs a structured drilling session over 200 banked knowledge questions: official CSP question stems plus natural variations on the same testable concepts, grouped by the 5 official themes. For each batch:
 
 1. Presents 10 multiple-choice questions (official stems + community-verified answers + plausible distractors)
 2. Grades your answers carefully
