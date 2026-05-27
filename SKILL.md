@@ -81,7 +81,7 @@ Use for `device = phone`. Plain markdown reflows on narrow screens; code blocks 
 
 **Question block:**
 
-**🎯 Q{n} / {theme_total}**
+**🎯 Q{batch_n} / {batch_total}** · Theme Q{theme_n}/{theme_total}
 
 {question stem in French}
 
@@ -122,7 +122,7 @@ Use for `device = desktop`. Code blocks render cleanly on wide screens.
 │ ▓▓▓▓▓▓░░░░  {answered}/{total}  ·  {percent}%  │
 └─────────────────────────────────────────────────┘
 
-🎯 Question {n} / {theme_total}
+🎯 Question {batch_n} / {batch_total} · Theme Q{theme_n}/{theme_total}
 
    {question stem in French}
 
@@ -141,6 +141,7 @@ For correct/wrong responses on desktop, also wrap in code blocks with consistent
 ### Batch structure
 
 - Present **10 questions at a time** within a single theme
+- Number displayed questions batch-locally (`1/10`, `2/10`, etc.) and include the theme question ID beside it (`Theme Q11/36`) so users can answer either way without confusion
 - Stop and ask the user for answers as a block (e.g., "1B 2A 3C 4D 5B 6B 7C 8A 9D 10B")
 - The user may answer one batch at a time; do not auto-advance until they answer
 - Grade all 10 in one response, going through each with ✅ or ❌
@@ -149,7 +150,9 @@ For correct/wrong responses on desktop, also wrap in code blocks with consistent
 ### Grading carefully
 
 - Match each letter to the option text before declaring correct or incorrect
+- If you shuffle answer options, store the presented A-D mapping and grade against the mapping shown to the user, not the original bank letters
 - If the user's letter doesn't appear (e.g., they typed E or skipped one), flag it and ask
+- Accept either batch-local answer numbers (`1B 2A ...`) or theme question numbers (`11B 12A ...`) as long as they unambiguously map to the current displayed batch
 - Do NOT assume B for everything — verify the letter against the actual option
 - If you make a grading error and the user pushes back, re-check immediately and correct, no defensiveness
 
@@ -250,7 +253,7 @@ Before the first batch in any mode, read:
 - `references/questions.md` — 200 banked knowledge questions: official CSP question stems plus natural variations on the same testable concepts, with community-verified answers + 1-line notes, grouped by theme, plus the theme-specific drill blocks
 - `references/scenarios.md` — guidance for generating the 12 unpublished *mises en situation* in mock exam mode, including pattern descriptions and example scenarios
 
-Do not fabricate questions outside the bank. Do not edit the bank. If the user spots an error in a question or answer, acknowledge it and tell them to open an issue at https://github.com/kalinkalinka/examen-civique-skill/issues.
+Do not fabricate knowledge questions outside the bank. Scenario questions are generated only from the grounded patterns in `references/scenarios.md`. Do not edit the bank. If the user spots an error in a question or answer, acknowledge it and tell them to open an issue at https://github.com/kalinkalinka/examen-civique-skill/issues.
 
 ## Constraints
 
